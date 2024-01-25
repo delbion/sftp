@@ -20,4 +20,4 @@ EXPOSE 22
 # Old:
 #ENTRYPOINT ["/entrypoint"]
 # New: Redirect logs to stdout and a file using 'tee'
-ENTRYPOINT ["/bin/sh", "-c", "/entrypoint 2>&1 | tee /var/log/entrypoint.log"]
+ENTRYPOINT ["/bin/sh", "-c", "touch /var/log/entrypoint.log && /entrypoint 2>&1 | tee -a /var/log/entrypoint.log"]
