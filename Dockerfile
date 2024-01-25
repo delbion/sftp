@@ -17,4 +17,7 @@ COPY files/entrypoint /
 
 EXPOSE 22
 
-ENTRYPOINT ["/entrypoint"]
+# Old:
+#ENTRYPOINT ["/entrypoint"]
+# New: Redirect logs to stdout and a file using 'tee'
+ENTRYPOINT ["/bin/sh", "-c", "/entrypoint | tee /var/log/auth_sftp_docker.log"]
