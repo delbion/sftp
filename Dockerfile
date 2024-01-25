@@ -20,4 +20,4 @@ EXPOSE 22
 # Old:
 #ENTRYPOINT ["/entrypoint"]
 # New: Redirect logs to stdout and a file using 'tee'
-CMD ["bash", "-c", "/entrypoint | tee /var/log/auth_sftp_docker.log"]
+ENTRYPOINT ["/bin/sh", "-c", "/entrypoint 2>&1 | tee /var/log/entrypoint.log"]
