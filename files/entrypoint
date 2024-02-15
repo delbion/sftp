@@ -92,8 +92,7 @@ fi
 
 if $startSshd; then
     log "Executing sshd"
-    exec /usr/sbin/sshd -D -e -E /var/log/sshd_sftp.log
-else
+    exec /usr/sbin/sshd -D -e
     log "Executing $*"
     exec "$@"
 fi
