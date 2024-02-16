@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM ubuntu:20.04
 MAINTAINER Carlos delbion.com
 
 # Steps done in one RUN layer:
