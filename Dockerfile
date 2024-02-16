@@ -1,6 +1,8 @@
 FROM ubuntu:20.04
 MAINTAINER Carlos delbion.com
 
+ENV TZ="Europe/Madrid"
+
 # Steps done in one RUN layer:
 # - Install packages
 # - OpenSSH needs /var/run/sshd to run
@@ -20,4 +22,4 @@ EXPOSE 22
 # Old:
 #ENTRYPOINT ["/entrypoint"]
 # New: Redirect logs to stdout and a file using 'tee'
-ENTRYPOINT ["/bin/sh", "-c", "touch /var/log/entrypoint.log && /entrypoint 2>&1 | while read line; do echo \"`date +'%b %d %H:%M:%S'` $line\"; done | tee -a /var/log/entrypoint.log"]
+ENTRYPOINT ["/bin/sh", "-c", "touch /var/log/entrypoint.log && /entrypoint 2>&1 | while read line; do echo \"`date +'%b %d %H:%M:%S'` `hostname` sftp: $line\"; done | tee -a /var/log/entrypoint.log"]
